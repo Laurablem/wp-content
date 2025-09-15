@@ -1,0 +1,261 @@
+/*
+Theme Name: Astra Child Theme
+Theme URI: https://wpastra.com/
+Author: Laura Blem Vinkler
+Author URI: https://portfolio.laurablem.dk/wp-admin/themes.php
+Description: The Astra Child Theme is based upon origial astra mother Theme in WordPress. This Astra child theme is lightning-fast and highly customizable theme. 
+Template: astra
+Version: 6.2
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: astra
+*/
+
+/* =========================================================
+   HEADER (forside): transparent overlay – min hero kan ligge bag
+   ========================================================= */
+.home .ast-primary-header-bar.ast-primary-header.main-header-bar.site-header {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* =========================================================
+   FARVER (mine variabler) – rød + menufarve (forside = hvid)
+   ========================================================= */
+:root {
+  --brand-red: #741610;           /* min røde */
+  --menu-color: var(--brand-red); /* standard: menu = rød */
+}
+.home { --menu-color: #FBF5E1; }  /* forside: menu = hvid */
+
+/* =========================================================
+   MENU TYPOGRAFI – samme font/udtryk på hoved- og undermenu
+   ========================================================= */
+.ast-primary-header-bar .main-header-menu .menu-link,
+.ast-primary-header-bar .main-header-menu .sub-menu .menu-link {
+  color: var(--menu-color);
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* =========================================================
+   HEADER (global): transparent på alle varianter
+   ========================================================= */
+.ast-primary-header-bar,
+.site-header,
+.ast-sticky-main-header .ast-primary-header-bar,
+.ast-header-break-point .ast-mobile-header-wrap .ast-primary-header-bar {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   MOBIL: mørk bagplade til burger-menu på forsiden
+   ========================================================= */
+.home.ast-header-break-point .main-header-menu {
+  background: rgba(0,0,0,0.7);
+}
+
+/* =========================================================
+   SMÅTING: skjul “pil” på mobil
+   ========================================================= */
+@media (max-width: 991px) {
+  #pil { display: none !important; }
+}
+
+/* =========================================================
+   TYPOGRAFI overskrifter – mit display-font
+   ========================================================= */
+h1, h2, h3, h4, h5,
+.entry-title, .page-title, .ast-archive-title,
+.elementor-widget-heading .elementor-heading-title {
+  font-family: "Goblin One", serif !important;
+  font-weight: 400;
+}
+
+/* =========================================================
+   ANIMATION (billeder): Wobble fra Animista
+   Brug: giv billedet/Widget klassen "anim-wobble"
+   ========================================================= */
+
+/* Keyframes */
+@-webkit-keyframes wobble-hor-bottom {
+  0%,100% { -webkit-transform: translateX(0%); transform: translateX(0%); -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; }
+  15%     { -webkit-transform: translateX(-30px) rotate(-6deg); transform: translateX(-30px) rotate(-6deg); }
+  30%     { -webkit-transform: translateX(15px)  rotate(6deg);  transform: translateX(15px)  rotate(6deg); }
+  45%     { -webkit-transform: translateX(-15px) rotate(-3.6deg);transform: translateX(-15px) rotate(-3.6deg); }
+  60%     { -webkit-transform: translateX(9px)   rotate(2.4deg); transform: translateX(9px)   rotate(2.4deg); }
+  75%     { -webkit-transform: translateX(-6px)  rotate(-1.2deg);transform: translateX(-6px)  rotate(-1.2deg); }
+}
+@keyframes wobble-hor-bottom {
+  0%,100% { -webkit-transform: translateX(0%); transform: translateX(0%); -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; }
+  15%     { -webkit-transform: translateX(-30px) rotate(-6deg); transform: translateX(-30px) rotate(-6deg); }
+  30%     { -webkit-transform: translateX(15px)  rotate(6deg);  transform: translateX(15px)  rotate(6deg); }
+  45%     { -webkit-transform: translateX(-15px) rotate(-3.6deg);transform: translateX(-15px) rotate(-3.6deg); }
+  60%     { -webkit-transform: translateX(9px)   rotate(2.4deg); transform: translateX(9px)   rotate(2.4deg); }
+  75%     { -webkit-transform: translateX(-6px)  rotate(-1.2deg);transform: translateX(-6px)  rotate(-1.2deg); }
+}
+
+/* Performance-hint */
+.elementor-widget-image.anim-wobble img,
+img.anim-wobble {
+  will-change: transform;
+}
+
+/* Hover-trigger */
+.elementor-widget-image.anim-wobble img:hover,
+img.anim-wobble:hover {
+  -webkit-animation: wobble-hor-bottom .8s both;
+          animation:  wobble-hor-bottom .8s both;
+}
+
+/* Små skrå billeder når jeg vil */
+#tilt-left  { transform: rotate(-3deg); }
+#tilt-right { transform: rotate( 2deg); }
+
+/* =========================================================
+   BRØDTEKST – standard p-stil (læsbart)
+   ========================================================= */
+body, p,
+.entry-content p,
+.elementor p,
+.elementor .elementor-widget-text-editor p{
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #222;
+  margin: 0 0 1.2em;
+}
+
+/* =========================================================
+   NAVIGATION: animeret underline (hover/aktiv)
+   - bruger min røde (--brand-red)
+   ========================================================= */
+:root{
+  --underline-thickness: 2px;  /* starttykkelse – justeres nedenfor */
+  --underline-offset: 6px;     /* afstand fra tekst */
+  --underline-speed: .25s;     /* hvor hurtigt den skyder ind */
+}
+
+/* gør links klar til pseudo-underline */
+.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link{
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* selve stregen (animeres ind) */
+.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: calc(-1 * var(--underline-offset));
+  height: var(--underline-thickness);
+  background: var(--brand-red); /* min røde (#741610) */
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--underline-speed) ease;
+  border-radius: 2px;
+}
+
+/* vis underline på hover og på aktivt punkt */
+.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link:hover::after,
+.ast-primary-header-bar .main-header-menu > .menu-item.current-menu-item > .menu-link::after,
+.ast-primary-header-bar .main-header-menu > .menu-item.current_page_item > .menu-link::after,
+.ast-primary-header-bar .main-header-menu > .menu-item.current-menu-ancestor > .menu-link::after{
+  transform: scaleX(1);
+}
+
+/* Finjustering: tættere, kortere, tykkere underline (min smag) */
+:root{
+  --underline-thickness: 4px;  /* tykkere streg */
+  --underline-offset: 2px;     /* tættere på teksten */
+  --underline-width: 60%;      /* kortere – procent af linkbredde */
+}
+.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link::after{
+  bottom: calc(-1 * var(--underline-offset));
+  height: var(--underline-thickness);
+  width: var(--underline-width);
+  left: 50%;
+  right: auto;                               /* overstyrer right:0 */
+  transform: translateX(-50%) scaleX(0);     /* centreret + animation */
+  transform-origin: center;
+  border-radius: 3px;
+}
+.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link:hover::after,
+.ast-primary-header-bar .main-header-menu > .menu-item.current-menu-item > .menu-link::after,
+.ast-primary-header-bar .main-header-menu > .menu-item.current_page_item > .menu-link::after,
+.ast-primary-header-bar .main-header-menu > .menu-item.current-menu-ancestor > .menu-link::after{
+  transform: translateX(-50%) scaleX(1);     /* samme centrering på hover */
+}
+
+/* =========================================================
+   DROPDOWN (underprojekter): panel, links, hover
+   ========================================================= */
+
+/* selve panelet */
+.ast-primary-header-bar .main-header-menu .sub-menu{
+  background: #ffffff;                 /* hvid baggrund */
+  border: 2px solid #741610;           /* ramme i min røde */
+  border-radius: 10px;                 /* bløde hjørner */
+  padding: 10px;                       /* luft inde i panelet */
+  box-shadow: 0 16px 30px rgba(0,0,0,.18);
+  min-width: 220px;                    /* bredde nok til titler */
+  margin-top: 12px;                    /* afstand fra hovedpunktet */
+}
+
+/* links i dropdown */
+.ast-primary-header-bar .main-header-menu .sub-menu .menu-link{
+  display: block;
+  padding: 10px 14px;                  /* godt klik-område */
+  color: #741610 !important;           /* læsbar tekstfarve */
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 6px;                  /* til hover-baggrund */
+  transition: background .15s ease, transform .15s ease;
+}
+
+/* hover/focus på dropdown-links */
+.ast-primary-header-bar .main-header-menu .sub-menu .menu-link:hover,
+.ast-primary-header-bar .main-header-menu .sub-menu .menu-link:focus{
+  background: rgba(116,22,16,.10);     /* lys rød baggrund */
+  color: #741610 !important;
+  transform: translateX(2px);          /* lille “skub” ved hover */
+}
+
+/* aktivt/aktuelt punkt i dropdown */
+.ast-primary-header-bar .main-header-menu .sub-menu .current-menu-item > .menu-link{
+  background: rgba(116,22,16,.14);
+  color: #741610 !important;
+}
+
+/* fjern evt. trekant-kile (i nogle Astra-versioner) */
+.ast-primary-header-bar .main-header-menu .sub-menu:before{
+  display: none;
+}
+
+/* =========================================================
+   Z-INDEX FIX – dropdown må ikke gemme sig bag hero
+   ========================================================= */
+.site-header,
+.ast-primary-header-bar,
+.ast-sticky-main-header .ast-primary-header-bar {
+  position: relative;
+  z-index: 5000;            /* højere end indholdet */
+  overflow: visible;        /* dropdown må gerne gå udenfor */
+}
+
+/* selve dropdown-laget lidt over headeren */
+.ast-primary-header-bar .main-header-menu .sub-menu {
+  position: absolute;
+  z-index: 6000;            /* over header-laget */
+}
