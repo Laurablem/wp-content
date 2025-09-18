@@ -5,7 +5,7 @@ Author: Laura Blem Vinkler
 Author URI: https://portfolio.laurablem.dk/wp-admin/themes.php
 Description: The Astra Child Theme is based upon origial astra mother Theme in WordPress. This Astra child theme is lightning-fast and highly customizable theme. 
 Template: astra
-Version: 6.2
+Version: 6.4
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: astra
@@ -24,16 +24,16 @@ Text Domain: astra
 }
 
 /* =========================================================
-   FARVER (mine variabler) – rød + menufarve (forside = hvid)
+   FARVER (mine variabler) – rød + menufarve (mulig forside)
    ========================================================= */
 :root {
   --brand-red: #741610;           /* min røde */
   --menu-color: var(--brand-red); /* standard: menu = rød */
 }
-.home { --menu-color: #FBF5E1; }  /* forside: menu = hvid */
+.home { --menu-color: #FBF5E1; }  /* forside måske */
 
 /* =========================================================
-   MENU TYPOGRAFI – samme font/udtryk på hoved- og undermenu
+   MENU TYPOGRAFI – samme font/udtryk på hoved og undermenu
    ========================================================= */
 .ast-primary-header-bar .main-header-menu .menu-link,
 .ast-primary-header-bar .main-header-menu .sub-menu .menu-link {
@@ -46,7 +46,7 @@ Text Domain: astra
 }
 
 /* =========================================================
-   HEADER (global): transparent på alle varianter
+   HEADER: transparent på alle varianter
    ========================================================= */
 .ast-primary-header-bar,
 .site-header,
@@ -71,7 +71,7 @@ Text Domain: astra
 }
 
 /* =========================================================
-   TYPOGRAFI overskrifter – mit display-font
+   TYPOGRAFI overskrifter – min display-font
    ========================================================= */
 h1, h2, h3, h4, h5,
 .entry-title, .page-title, .ast-archive-title,
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5,
 
 /* =========================================================
    ANIMATION (billeder): Wobble fra Animista
-   Brug: giv billedet/Widget klassen "anim-wobble"
+   fungerer med klassen "anim-wobble" billedet/Widget
    ========================================================= */
 
 /* Keyframes */
@@ -116,12 +116,12 @@ img.anim-wobble:hover {
           animation:  wobble-hor-bottom .8s both;
 }
 
-/* Små skrå billeder når jeg vil */
+/* Små skrå billeder til photobooth billederne til forside */
 #tilt-left  { transform: rotate(-3deg); }
 #tilt-right { transform: rotate( 2deg); }
 
 /* =========================================================
-   BRØDTEKST – standard p-stil (læsbart)
+   Gennemgående brødtekst, arial
    ========================================================= */
 body, p,
 .entry-content p,
@@ -139,9 +139,9 @@ body, p,
    - bruger min røde (--brand-red)
    ========================================================= */
 :root{
-  --underline-thickness: 2px;  /* starttykkelse – justeres nedenfor */
-  --underline-offset: 6px;     /* afstand fra tekst */
-  --underline-speed: .25s;     /* hvor hurtigt den skyder ind */
+  --underline-thickness: 2px;  
+  --underline-offset: 6px;     
+  --underline-speed: .25s;     
 }
 
 /* gør links klar til pseudo-underline */
@@ -173,18 +173,18 @@ body, p,
   transform: scaleX(1);
 }
 
-/* Finjustering: tættere, kortere, tykkere underline (min smag) */
+/* Finjustering: tættere, kortere, tykkere underline */
 :root{
-  --underline-thickness: 4px;  /* tykkere streg */
-  --underline-offset: 2px;     /* tættere på teksten */
-  --underline-width: 60%;      /* kortere – procent af linkbredde */
+  --underline-thickness: 4px;  
+  --underline-offset: 2px;     
+  --underline-width: 60%;      
 }
 .ast-primary-header-bar .main-header-menu > .menu-item > .menu-link::after{
   bottom: calc(-1 * var(--underline-offset));
   height: var(--underline-thickness);
   width: var(--underline-width);
   left: 50%;
-  right: auto;                               /* overstyrer right:0 */
+  right: auto;                               
   transform: translateX(-50%) scaleX(0);     /* centreret + animation */
   transform-origin: center;
   border-radius: 3px;
@@ -202,20 +202,20 @@ body, p,
 
 /* selve panelet */
 .ast-primary-header-bar .main-header-menu .sub-menu{
-  background: #ffffff;                 /* hvid baggrund */
-  border: 2px solid #741610;           /* ramme i min røde */
-  border-radius: 10px;                 /* bløde hjørner */
-  padding: 10px;                       /* luft inde i panelet */
+  background: #F7F6F2;                 
+  border: 2px solid #741610;           
+  border-radius: 5px;                 
+  padding: 10px;                       
   box-shadow: 0 16px 30px rgba(0,0,0,.18);
-  min-width: 220px;                    /* bredde nok til titler */
-  margin-top: 12px;                    /* afstand fra hovedpunktet */
+  min-width: 220px;                    
+  margin-top: 12px;                    
 }
 
 /* links i dropdown */
 .ast-primary-header-bar .main-header-menu .sub-menu .menu-link{
   display: block;
   padding: 10px 14px;                  /* godt klik-område */
-  color: #741610 !important;           /* læsbar tekstfarve */
+  color: #741610 !important;           
   font-family: 'Arial Black', Arial, sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
@@ -227,9 +227,9 @@ body, p,
 /* hover/focus på dropdown-links */
 .ast-primary-header-bar .main-header-menu .sub-menu .menu-link:hover,
 .ast-primary-header-bar .main-header-menu .sub-menu .menu-link:focus{
-  background: rgba(116,22,16,.10);     /* lys rød baggrund */
+  background: rgba(116,22,16,.10);     
   color: #741610 !important;
-  transform: translateX(2px);          /* lille “skub” ved hover */
+  transform: translateX(2px);         
 }
 
 /* aktivt/aktuelt punkt i dropdown */
@@ -238,13 +238,13 @@ body, p,
   color: #741610 !important;
 }
 
-/* fjern evt. trekant-kile (i nogle Astra-versioner) */
+/* fjern trekant-kile  */
 .ast-primary-header-bar .main-header-menu .sub-menu:before{
   display: none;
 }
 
 /* =========================================================
-   Z-INDEX FIX – dropdown må ikke gemme sig bag hero
+   Z-INDEX – dropdown fra menuen må ikke gemme sig bag hero
    ========================================================= */
 .site-header,
 .ast-primary-header-bar,
@@ -259,3 +259,46 @@ body, p,
   position: absolute;
   z-index: 6000;            /* over header-laget */
 }
+
+/* =========================================================
+   Fra animista - effekt til billeder
+   ========================================================= */
+
+/* Keyframes (Animista) */
+@-webkit-keyframes bounce-top {
+  0%   { -webkit-transform: translateY(-45px); transform: translateY(-45px); -webkit-animation-timing-function: ease-in; animation-timing-function: ease-in; opacity: 1; }
+  24%  { opacity: 1; }
+  40%  { -webkit-transform: translateY(-24px); transform: translateY(-24px); -webkit-animation-timing-function: ease-in; animation-timing-function: ease-in; }
+  65%  { -webkit-transform: translateY(-12px); transform: translateY(-12px); -webkit-animation-timing-function: ease-in; animation-timing-function: ease-in; }
+  82%  { -webkit-transform: translateY(-6px);  transform: translateY(-6px);  -webkit-animation-timing-function: ease-in; animation-timing-function: ease-in; }
+  93%  { -webkit-transform: translateY(-4px);  transform: translateY(-4px);  -webkit-animation-timing-function: ease-in; animation-timing-function: ease-in; }
+  25%,55%,75%,87% { -webkit-transform: translateY(0); transform: translateY(0); -webkit-animation-timing-function: ease-out; animation-timing-function: ease-out; }
+  100% { -webkit-transform: translateY(0); transform: translateY(0); -webkit-animation-timing-function: ease-out; animation-timing-function: ease-out; opacity: 1; }
+}
+@keyframes bounce-top {
+  0%   { transform: translateY(-45px); animation-timing-function: ease-in; opacity: 1; }
+  24%  { opacity: 1; }
+  40%  { transform: translateY(-24px); animation-timing-function: ease-in; }
+  65%  { transform: translateY(-12px); animation-timing-function: ease-in; }
+  82%  { transform: translateY(-6px);  animation-timing-function: ease-in; }
+  93%  { transform: translateY(-4px);  animation-timing-function: ease-in; }
+  25%,55%,75%,87% { transform: translateY(0); animation-timing-function: ease-out; }
+  100% { transform: translateY(0); animation-timing-function: ease-out; opacity: 1; }
+}
+
+/* Performance-hint (heads up) */
+.elementor-widget-image.anim-bounce img,
+img.anim-bounce {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Hover-trigger */
+.elementor-widget-image.anim-bounce img:hover,
+img.anim-bounce:hover {
+  -webkit-animation: bounce-top .9s both;
+          animation:  bounce-top .9s both;
+  transform: translateZ(0) scale(1.03); /* valgfri lille skalering */
+}
+
